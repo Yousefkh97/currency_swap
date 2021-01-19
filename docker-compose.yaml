@@ -5,7 +5,7 @@ services:
     hostname: backend
     network_mode: host
     ports:
-      - "5000:5000"
+      - "6660:5000"
   web1:
     build: ./frontend
     hostname: frontend
