@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="background-color:#A32B16">
+<h1> <center><p style="color:#F7F9F9";> Auti </p>  </center> </h1>
+<center>
+<table>
+    <tr style="background-color: black ;">
+        <td style="color: #F7F9F9;"><center>Time</center></td>
+        <td style="color: #F7F9F9;"><center>Amount</center></td>
+        <td style="color: #F7F9F9;"><center>Currency</center></td>
+        <td style="color: #F7F9F9;"><center>Target_Currency</center></td>
+        <td style="color: #F7F9F9;"><center>Rate</center></td>
+        <td style="color: #F7F9F9;"><center>Conversion</center></td>
+    </tr>
+    {% for i in info %}
+        <tr style="background-color: black ;">
+            <td style="color: #F7F9F9;"><center> {{ i[0] }} </center></td>
+            <td style="color: #F7F9F9;"><center> {{ i[1] }} </center></td>
+            <td style="color: #F7F9F9;"><center> {{ i[2] }} </center></td>
+            <td style="color: #F7F9F9;"><center> {{ i[3] }} </center></td>
+            <td style="color: #F7F9F9;"><center> {{ i[4] }} </center></td>
+            <td style="color: #F7F9F9;"><center> {{ i[5] }} </center></td>
+
+        </tr>
+    {% endfor %}
+</table>
+</center>
+</body>
+</html>
