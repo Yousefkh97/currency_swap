@@ -4,7 +4,7 @@ import requests
 from datetime import datetime
 import urllib, json
 import urllib.request
-
+import socket
 from pip._internal import req
 from werkzeug.utils import redirect
 
@@ -16,7 +16,7 @@ info_list =[]
 
 @app.route("/", methods=["POST", "GET"])
 def index():
-    ip_address = urllib.request.urlopen("http://169.254.169.254/latest/meta-data/public-ipv4").read()
+    ip_address = socket.gethostbyname(socket.gethostname())
     fd = 'http://' + ip_address + ':8000/'
     if request.method == "POST":
         fistCurrency = request.form.get("firstCurrency")
@@ -45,7 +45,7 @@ def index():
 
 @app.route("/Auti/", methods=["POST", "GET"])
 def Auti():
-    ip_address2 = urllib.request.urlopen("http://169.254.169.254/latest/meta-data/public-ipv4").read()
+    ip_address2 = socket.gethostbyname(socket.gethostname())
     fd2 = 'http://' + ip_address2 + ':7000/'
     info_dict = dict()
     info_dict["info"] = info_list
