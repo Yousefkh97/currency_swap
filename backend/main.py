@@ -16,7 +16,7 @@ info_list =[]
 
 @app.route("/", methods=["POST", "GET"])
 def index():
-    ip_address = socket.gethostbyname(socket.gethostname())
+    ip_address = requests.get("http://169.254.169.254/latest/meta-data/public-ipv4").content
     fd = 'http://' + ip_address + ':8000/'
     if request.method == "POST":
         fistCurrency = request.form.get("firstCurrency")
@@ -45,7 +45,7 @@ def index():
 
 @app.route("/Auti/", methods=["POST", "GET"])
 def Auti():
-    ip_address2 = socket.gethostbyname(socket.gethostname())
+    ip_address2 = requests.get("http://169.254.169.254/latest/meta-data/public-ipv4").content
     fd2 = 'http://' + ip_address2 + ':7000/'
     info_dict = dict()
     info_dict["info"] = info_list
