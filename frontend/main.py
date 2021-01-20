@@ -12,7 +12,9 @@ info_list =[]
 when_get = dict()
 @app.route("/", methods=["POST", "GET"])
 def index():
-    ip_address = flask.request.remote_addr
+    #ip_address = flask.request.remote_addr
+    data = json.loads(urllib.request.urlopen("http://ip.jsontest.com/").read())
+    ip_address = data["ip"]
     ur1 = "http://" + ip_address + ":5000"
     ur2 = "http://" + ip_address + ":5000/Auti/"
     if request.method == "POST":
