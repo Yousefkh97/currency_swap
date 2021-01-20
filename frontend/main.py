@@ -4,6 +4,7 @@ from datetime import datetime
 
 api_key = "85aa5a4fb3533fbae7223f74ccb1befb"
 url = "http://data.fixer.io/api/latest?access_key=" + api_key
+ip_address = flask.request.remote_addr
 
 app = Flask(__name__)
 info_list =[]
@@ -14,7 +15,7 @@ def index():
         input_json = request.get_json(force=True)
         global when_get
         when_get= input_json
-    return render_template("index2.html", info=when_get)
+    return render_template("index2.html", info=when_get, val = ip_address)
 
 
 if __name__ == "__main__":
