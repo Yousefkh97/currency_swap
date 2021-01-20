@@ -6,7 +6,9 @@ from datetime import datetime
 from pip._internal import req
 from werkzeug.utils import redirect
 import urllib, json
+import urllib.request
 
+urllib.request.urlopen("http://169.254.169.254/latest/meta-data/public-ipv4").read()
 api_key = "85aa5a4fb3533fbae7223f74ccb1befb"
 url = "http://data.fixer.io/api/latest?access_key=" + api_key
 
@@ -17,8 +19,9 @@ when_get = dict()
 @app.route("/", methods=["POST", "GET"])
 def index():
     #ip_address = flask.request.remote_addr
-    data = json.loads(urllib.request.urlopen("http://ip.jsontest.com/").read())
-    ip_address = data["ip"]
+    #data = json.loads(urllib.request.urlopen("http://ip.jsontest.com/").read())
+    #ip_address = data["ip"]
+    ip_address = urllib.request.urlopen("http://169.254.169.254/latest/meta-data/public-ipv4").read()
     ur1 = "http://" + ip_address + ":5000"
     ur2 = "http://" + ip_address + ":5000/Auti/"
     if request.method == "POST":

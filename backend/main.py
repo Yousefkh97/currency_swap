@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, jsonify, url_for
 import requests
 from datetime import datetime
 import urllib, json
+import urllib.request
 
 from pip._internal import req
 from werkzeug.utils import redirect
@@ -15,7 +16,7 @@ info_list =[]
 
 @app.route("/", methods=["POST", "GET"])
 def index():
-    ip_address = flask.request.remote_addr
+    ip_address = urllib.request.urlopen("http://169.254.169.254/latest/meta-data/public-ipv4").read()
     fd = 'http://' + ip_address + ':8000/'
     if request.method == "POST":
         fistCurrency = request.form.get("firstCurrency")
@@ -44,7 +45,7 @@ def index():
 
 @app.route("/Auti/", methods=["POST", "GET"])
 def Auti():
-    ip_address2 = flask.request.remote_addr
+    ip_address2 = urllib.request.urlopen("http://169.254.169.254/latest/meta-data/public-ipv4").read()
     fd2 = 'http://' + ip_address2 + ':7000/'
     info_dict = dict()
     info_dict["info"] = info_list
