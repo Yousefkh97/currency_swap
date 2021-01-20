@@ -1,3 +1,4 @@
+import flask
 from flask import Flask, render_template, request, jsonify, url_for
 import requests
 from datetime import datetime
@@ -5,7 +6,6 @@ from datetime import datetime
 from pip._internal import req
 from werkzeug.utils import redirect
 
-ip_address = flask.request.remote_addr
 api_key = "85aa5a4fb3533fbae7223f74ccb1befb"
 url = "http://data.fixer.io/api/latest?access_key=" + api_key
 
@@ -14,7 +14,8 @@ info_list =[]
 
 @app.route("/", methods=["POST", "GET"])
 def index():
-
+    ip_address = flask.request.remote_addr
+    fd = 'http://' + ip_address + ':8000/'
     if request.method == "POST":
         fistCurrency = request.form.get("firstCurrency")
         secondCurrency = request.form.get("secondCurrency")
@@ -35,7 +36,6 @@ def index():
         current_time = now.strftime("%H:%M:%S")
         l = [current_time, amount, fistCurrency, secondCurrency, secondValue, result]
         info_list.append(l)
-        fd = 'http://' + ip_address + ':8000/'
         res = requests.post(fd, json=currencyInfo)
         return redirect(fd, code=302)
     else:
@@ -43,11 +43,13 @@ def index():
 
 @app.route("/Auti/", methods=["POST", "GET"])
 def Auti():
+    ip_address2 = flask.request.remote_addr
+    fd2 = 'http://' + ip_address2 + ':7000/'
     info_dict = dict()
     info_dict["info"] = info_list
-    au = 'http://' + ip_address + ':7000/'
-    res = requests.post(au, json=info_dict)
-    return redirect(au, code=302)
+    res = requests.post(fd2, json=info_dict)
+    return redirect(fd2, code=302)
 
 if __name__ == "__main__":
     app.run(host = "0.0.0.0", debug=True)
+
