@@ -5,6 +5,7 @@ from datetime import datetime
 
 from pip._internal import req
 from werkzeug.utils import redirect
+import urllib, json
 
 api_key = "85aa5a4fb3533fbae7223f74ccb1befb"
 url = "http://data.fixer.io/api/latest?access_key=" + api_key
