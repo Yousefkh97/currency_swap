@@ -20,8 +20,8 @@ info_list =[]
 when_get = dict()
 @app.route("/", methods=["POST", "GET"])
 def index():
-    #ip_address = (requests.get("http://169.254.169.254/latest/meta-data/public-ipv4").content).decode('utf-8')
-    ip_address = '0.0.0.0'
+    ip_address = (requests.get("http://169.254.169.254/latest/meta-data/local-ipv4").content).decode('utf-8')
+    #ip_address = '0.0.0.0'
     ur1 = "http://" + ip_address + ":5000"
     ur2 = "http://" + ip_address + ":5000/Auti/"
     if request.method == "POST":
