@@ -16,9 +16,9 @@ info_list =[]
 
 @app.route("/", methods=["POST", "GET"])
 def index():
-    ip_address = (requests.get("http://169.254.169.254/latest/meta-data/local-ipv4").content).decode('utf-8')
+    #ip_address = (requests.get("http://169.254.169.254/latest/meta-data/local-ipv4").content).decode('utf-8')
     #ip_address = '0.0.0.0'
-    fd = 'http://' + ip_address + ':8000/'
+    #fd = 'http://' + ip_address + ':8000/'
     if request.method == "POST":
         fistCurrency = request.form.get("firstCurrency")
         secondCurrency = request.form.get("secondCurrency")
@@ -39,20 +39,20 @@ def index():
         current_time = now.strftime("%H:%M:%S")
         l = [current_time, amount, fistCurrency, secondCurrency, secondValue, result]
         info_list.append(l)
-        res = requests.post(fd, json=currencyInfo)
-        return redirect(fd, code=302)
+        res = requests.post('http://0.0.0.0:8000/', json=currencyInfo)
+        return redirect('http://0.0.0.0:8000/', code=302)
     else:
-        return redirect(fd, code=302)
+        return redirect('http://0.0.0.0:8000/', code=302)
 
 @app.route("/Auti/", methods=["POST", "GET"])
 def Auti():
-    ip_address2 = (requests.get("http://169.254.169.254/latest/meta-data/local-ipv4").content).decode('utf-8')
+    #ip_address2 = (requests.get("http://169.254.169.254/latest/meta-data/local-ipv4").content).decode('utf-8')
     #ip_address2 = '0.0.0.0'
-    fd2 = 'http://' + ip_address2 + ':7000/'
+    #fd2 = 'http://' + ip_address2 + ':7000/'
     info_dict = dict()
     info_dict["info"] = info_list
-    res = requests.post(fd2, json=info_dict)
-    return redirect(fd2, code=302)
+    res = requests.post("http://0.0.0.0:7000/", json=info_dict)
+    return redirect("http://0.0.0.0:7000/", code=302)
 
 if __name__ == "__main__":
     app.run(host = "0.0.0.0", debug=True)
