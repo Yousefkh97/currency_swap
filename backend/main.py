@@ -8,17 +8,19 @@ import socket
 from pip._internal import req
 from werkzeug.utils import redirect
 
+# the url that get the data of currncy from
 api_key = "85aa5a4fb3533fbae7223f74ccb1befb"
 url = "http://data.fixer.io/api/latest?access_key=" + api_key
 
 app = Flask(__name__)
-info_list =[]
+info_list =[] # list to save the transction
 
 @app.route("/", methods=["POST", "GET"])
 def index():
+    # get the public ip of the aws ec2
     ip_address = (requests.get("http://169.254.169.254/latest/meta-data/public-ipv4").content).decode('utf-8')
-    #ip_address = '0.0.0.0'
     fd = 'http://' + ip_address + ':8000/'
+    # when req a post from the front end take all the data and make a culculet to return the result
     if request.method == "POST":
         fistCurrency = request.form.get("firstCurrency")
         secondCurrency = request.form.get("secondCurrency")
@@ -40,14 +42,13 @@ def index():
         l = [current_time, amount, fistCurrency, secondCurrency, secondValue, result]
         info_list.append(l)
         res = requests.post(fd, json=currencyInfo)
-        return redirect(fd, code=302)
+        return redirect(fd, code=302) # return to the frontend  page
     else:
         return redirect(fd, code=302)
 
 @app.route("/Auti/", methods=["POST", "GET"])
 def Auti():
     ip_address2 = (requests.get("http://169.254.169.254/latest/meta-data/public-ipv4").content).decode('utf-8')
-    #ip_address2 = '0.0.0.0'
     fd2 = 'http://' + ip_address2 + ':7000/'
     info_dict = dict()
     info_dict["info"] = info_list
