@@ -95,6 +95,20 @@ resource "aws_security_group" "allow_web" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+  ingress {
+    description = "docker"
+    from_port   = 7000
+    to_port     = 7000
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
+    description = "docker"
+    from_port   = 8000
+    to_port     = 8000
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
   egress {
     from_port   = 0
@@ -214,15 +228,15 @@ resource "aws_instance" "web-server-instance" {
       "sudo curl -L \"https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)\" -o /usr/local/bin/docker-compose",
       "sudo chmod +x /usr/local/bin/docker-compose",
       "sudo apt install git-all -y",
-      "git clone https://github.com/mohamedgalia/final_project.git",
-      "cd final_project",
-      "sudo docker-compose up -d --build "
+      "git clone https://github.com/mohamedgalia/currency_swap.git",
+      "cd currency_swap",
+      "sudo docker-compose up -d --build"
     ]
 
-    # make connection to the Ubuntu server
+    # make connection to the Ubuntu server 
     connection {
     type     = "ssh"
-    private_key = "${file("C:/Users/PC/Desktop/terraform/gazal.pem")}" # privte key
+    private_key = "${file("./gazal.pem")}" # privte key
     user     = "ubuntu"
     host     = aws_instance.web-server-instance.public_ip #public ip to the Ubuntu server
     agent = false
