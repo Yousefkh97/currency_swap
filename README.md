@@ -3,6 +3,10 @@ it is a project that support currency swap
 
 ![alt text](https://i.imgur.com/E8Qlh9h.png)
 
+you will set the currenct you want to change and the amount  
+and click in cal butten to see the result  
+and you can by click **Auti** butten see all you transaction history  
+
 # how to run in terraform:  
 git clone https://github.com/mohamedgalia/currency_swap.git  
 cd currency_swap  
@@ -12,7 +16,7 @@ terraform apply
   
 **you will find the app in "instance-ip:8000"**  
 
-#how to run in k8s:
+#how to run in k8s:  
 git clone https://github.com/mohamedgalia/currency_swap.git  
 cd currency_swap/k8s  
 kubectl apply -f backend-dp.yml -f backend-sr.yml -f frontend-dp.yml -f frontend-sr.yml -f auti-dp.yml -f auti-sr.yml  
