@@ -12,6 +12,7 @@ git clone https://github.com/mohamedgalia/currency_swap.git
 cd currency_swap  
 go to main.tf file  
 add your privte key file to the folder and set it in line 239 (./gazal.pem)  
+set your access_key and secret_key of aws in variables.tf file in access_key_var and secret_key_var  
 terraform init  
 terraform apply
   
