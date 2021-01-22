@@ -11,6 +11,7 @@ and you can by click **Auti** butten see all you transaction history
 git clone https://github.com/mohamedgalia/currency_swap.git  
 cd currency_swap  
 go to main.tf file  
+add your privte key file to the folder and set it in line 239 (./gazal.pem)
 terraform init  
 terraform apply
   
