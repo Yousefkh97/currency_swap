@@ -11,12 +11,12 @@ variable "availability_zone_names" {
 
 variable "access_key_var" {
   type        = string
-  default = "AKIAQTO33TLXU6LDBSW2"
+  default = ""
 }
 
 variable "secret_key_var" {
   type        = string
-  default = "7ka14oI+JXb8YKMmtkbG++mwdkh6z33A0l+eDtUj"
+  default = ""
 }
 
 variable "vpc_ip" {
