@@ -20,7 +20,7 @@ terraform apply
 # how to run in k8s:  
 git clone https://github.com/mohamedgalia/currency_swap.git  
 cd currency_swap/k8s  
-kubectl apply -f backend-dp.yml -f backend-sr.yml -f frontend-dp.yml -f frontend-sr.yml -f auti-dp.yml -f auti-sr.yml  
+kubectl apply -f backend-dy.yml -f backend-sr.yml -f frontend-dy.yml -f frontend-sr.yml -f auti-dy.yml -f auti-sr.yml  
 
 **you will find the app in "127.0.0.1:30037"**  
 
