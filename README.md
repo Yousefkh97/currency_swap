@@ -17,10 +17,10 @@ set your access_key and secret_key of aws in variables.tf file in access_key_var
 terraform init  
 terraform apply
 
-if you want to remove every thing that build run:
+if you want to remove every thing that build run:  
 terraform destroy
   
-**go to your aws console and get your instance public ip**
+**go to your aws console and get your instance public ip**  
 **and you will find the app in "your-instance-ip:8000"**  
 
 # how to run in k8s:  
