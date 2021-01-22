@@ -11,7 +11,7 @@ and you can by click **Auti** butten see all you transaction history
 git clone https://github.com/mohamedgalia/currency_swap.git  
 cd currency_swap  
 go to main.tf file  
-change the key name in line 179 "key_name = "gazal"" to your Keypair name a your aws
+change the key name in line 179 "key_name = "gazal"" to your Keypair name in your aws  
 add your privte key file to the folder and set it in line 239 (./gazal.pem)  
 set your access_key and secret_key of aws in variables.tf file in access_key_var and secret_key_var  
 terraform init  
