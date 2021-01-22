@@ -236,7 +236,7 @@ resource "aws_instance" "web-server-instance" {
     # make connection to the Ubuntu server 
     connection {
     type     = "ssh"
-    private_key = "${file("./gazal.pem")}" # privte key
+    private_key = file("./gazal.pem") # privte key
     user     = "ubuntu"
     host     = aws_instance.web-server-instance.public_ip #public ip to the Ubuntu server
     agent = false
