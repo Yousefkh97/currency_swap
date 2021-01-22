@@ -16,8 +16,12 @@ add your privte key file to the folder and set it in line 239 (./gazal.pem)
 set your access_key and secret_key of aws in variables.tf file in access_key_var and secret_key_var  
 terraform init  
 terraform apply
+
+if you want to remove every thing that build run:
+terraform destroy
   
-**you will find the app in "instance-ip:8000"**  
+**go to your aws console and get your instance public ip**
+**and you will find the app in "your-instance-ip:8000"**  
 
 # how to run in k8s:  
 git clone https://github.com/mohamedgalia/currency_swap.git  
